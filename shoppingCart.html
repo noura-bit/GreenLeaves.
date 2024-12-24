@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Green Leaves </title>
+        <link rel="stylesheet" href="Project.CSS"> 
+    </head>
+
+    <body>
+        <header> 
+            <div class="logoimage">
+               <img src="Green Simple Plant Shop Logo11.png"> 
+            </div>
+
+            <div class="list">
+            <ul>
+                <li> <a href="index.html"> Home </a></li>
+                <li> <a href="product.html"> Product</a></li>
+                <li> <a href="shoppingCart.html"> Shopping Cart </a></li>
+                <li> <a href="login.html"> Login</a></li>
+                <li> <a href="conactUs.html"> Contact Us</a></li>
+            </ul>
+        </header>
+
+        <br><br><h1> Please select the plant you want to buy :</h1><br><br>
+        
+        <form class="form">
+           
+            
+        <table>
+            <tr> 
+                <td class="td2">
+                    <div class="boxPro2" >
+                    <img src="Artificial-Fan-Palm-Tree-8-leaves-1.jpg">
+                    <p>  Palm Tree 8 leaves </p><br>
+                    <p> 65 SAR </p><br>
+                     <label for="num1" >Product Quantity</label>
+                     <select name="plant">
+                        <option value="one"> 1 </option>
+                        <option value="two"> 2 </option>
+                        <option value="three"> 3 </option>
+                        <option value="four"> 4 </option>
+                     </select>
+                     <label for="num2">Add to cart </label>
+                     <input type="checkbox" name="order" value="order1">
+                    </div>
+                </td>
+            </tr>
+                <td class="td2">
+                    <div class="boxPro2">
+                    <img src="Artificial-Sansevieria-Trifasciata-with-pot.jpg"><br>
+                    <p>  Sansevieria Trifasciata with pot </p><br>
+                    <p> 60 SAR </p><br>
+                    <label for="num3">Product Quantity</label>
+                     <select name="plant" id="num3">
+                        <option value="one"> 1 </option>
+                        <option value="two"> 2 </option>
+                        <option value="three"> 3 </option>
+                        <option value="four"> 4 </option>
+                     </select>
+                     <label for="num4">Add to cart </label>
+                     <input type="checkbox" name="order" value="order1">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    <div class="boxPro2">
+                    <img src="Artificial-Potted-Orchid-1.jpg"><br>
+                    <p>  Potted Orchid </p><br>
+                    <p> 68 SAR </p><br>
+                    <label for="num5" >Product Quantity</label>
+                     <select name="plant" id="num5">
+                        <option value="one"> 1 </option>
+                        <option value="two"> 2 </option>
+                        <option value="three"> 3 </option>
+                        <option value="four"> 4 </option>
+                     </select>
+                     <label for="num6">Add to cart </label>
+                     <input type="checkbox" name="order" value="order1">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    <div class="boxPro2">
+                    <img src="Ficus-microcarpa-Ginseng.jpg"><br>
+                    <p> Indian Laurel</p><br>
+                    <p> 62 SAR </p><br>
+                    <label for="num7">Product Quantity</label>
+                     <select name="plant" >
+                        <option value="one"> 1 </option>
+                        <option value="two"> 2 </option>
+                        <option value="three"> 3 </option>
+                        <option value="four"> 4 </option>
+                     </select>
+                     <label for="num8">Add to cart </label>
+                     <input type="checkbox" name="order" value="order1">
+                    </div>
+                </td>
+            </tr>
+            <tr>    
+                <td class="td2">
+                    <div class="boxPro2">
+                    <img src="Artificial-Bamboo-120cm.jpg"><br>
+                    <p> Bamboo </p><br>
+                    <p> 70 SAR </p><br>
+                    <label for="num9" >Product Quantity</label>
+                     <select name="plant">
+                        <option value="one"> 1 </option>
+                        <option value="two"> 2 </option>
+                        <option value="three"> 3 </option>
+                        <option value="four"> 4 </option>
+                     </select>
+                     <label for="num10">Add to cart </label>
+                     <input type="checkbox" name="order" value="order1">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">
+                    <div class="boxPro2">
+                    <img src="hypoestes-phyllostachya-polka-dot-plant-pink-00-2.jpg"><br>
+                    <p> Polka Dot Plant </p><br>
+                    <p> 55 SAR </p><br>
+                    <label for="num11" >Product Quantity</label>
+                     <select name="plant" id="num11">
+                        <option value="one"> 1 </option>
+                        <option value="two"> 2 </option>
+                        <option value="three"> 3 </option>
+                        <option value="four"> 4 </option>
+                     </select>
+                     <label for="num12">Add to cart </label>
+                     <input type="checkbox" name="order" value="order1">
+                    </div>
+                </td>
+            </tr>
+    </table> <br><br><br>
+    <input type="submit" value="Order Now" class="submit"> <br> <br><br>
+    </form>
+        <script>
+            // Add an event listener to the "Order Now" button
+            var orderButton = document.querySelector(".submit");
+            orderButton.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+                alert("Thank you for your order! We will process it shortly.");
+            });
+        </script>
+        
+        <a href="gift.html" id="btn3"> For gift requests</a><br><br><br>
+    
+
+        <footer>
+             <p id="p"> Created By Noura </p>
+        </footer>
+    </body>
+</html>

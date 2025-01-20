@@ -101,23 +101,44 @@ footer{
 /* end product page */
 
 /* Start login,creatAccount page */
+.container123 {
+    display: flex;
+    justify-content: center; /* Centers the forms */
+    align-items: flex-start; /* Aligns them at the top */
+    gap: 40px; /* Adds space between the two forms */
+    margin-top: 50px;
+    flex-wrap: wrap; /* Makes it responsive for smaller screens */
+}
+
+/* Styles for both login and encryption forms */
+.login {
+    flex: 1; /* Ensures equal width */
+    min-width: 350px; /* Prevents shrinking */
+}
+@media screen and (max-width: 1000px) {
+    .container123 {
+        flex-direction: column; /* Stacks boxes on smaller screens */
+        align-items: center;
+        gap: 20px;
+    }
+}
 .login_form{
     background:#fff;
     border: 1px solid rgba(0,0,0,.1);
-    width: 640px;;
+    width: 500px;
     padding:32px;
-    margin: 70px;
+    margin: 0;
     box-shadow: 1px 16px 16px rgba(0,0,0,.1);
     border-radius: 20px;
+    min-height: 420px;
 }
 .login h2{
     font-size: 24px;
-    text-transform: uppercase;
     color:black;
     text-align: center;
 }
 .login .box{
-    width: 600px;
+    width: 400px;
     margin:11px;
     font-size: 26px;
     border:0.5px solid rgba(0,0,0,.1);
@@ -151,6 +172,10 @@ footer{
 .login_form label{
     font-size: 25px;
 }
+#encryptedText , #decryptedText{
+    font-size: 25px;
+}
+
 /* end login,creatAccount page*/
 
 /*start shoppingCart page*/
@@ -264,4 +289,5 @@ h1{
    text-align: center;
 }
 /*end details page*/
+
 

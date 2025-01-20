@@ -1,45 +1,132 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title> Green Leaves </title>
-        <link rel="stylesheet" href="Project.CSS">
-    </head>
+<html lang="en">
+<head>
+    <title> Green Leaves </title>
+    <link rel="stylesheet" href="Project.css"> 
+    <script>
+        let publicKey, privateKey;
 
-    <body>
-        <header> 
-            <div class="logoimage">
-               <img src="Green Simple Plant Shop Logo11.png"> 
-            </div>
+        // Generate Public & Private Key Pair
+        async function generateKeys() {
+            const keyPair = await window.crypto.subtle.generateKey(
+                {
+                    name: "RSA-OAEP",
+                    modulusLength: 2048,
+                    publicExponent: new Uint8Array([1, 0, 1]),
+                    hash: "SHA-256",
+                },
+                true, 
+                ["encrypt", "decrypt"]
+            );
 
-            <div class="list">
+            publicKey = keyPair.publicKey;
+            privateKey = keyPair.privateKey;
+            console.log("Keys Generated");
+        }
+
+        // Encrypt Text
+        async function encryptText(event) {
+            event.preventDefault();
+            const message = document.getElementById("inputText").value;
+            if (!publicKey || message.trim() === "") {
+                alert("Generate keys and enter text first!");
+                return;
+            }
+
+            const encoder = new TextEncoder();
+            const encodedMessage = encoder.encode(message);
+            const encryptedData = await window.crypto.subtle.encrypt(
+                {
+                    name: "RSA-OAEP",
+                },
+                publicKey,
+                encodedMessage
+            );
+
+            document.getElementById("encryptedText").value = btoa(String.fromCharCode(...new Uint8Array(encryptedData)));
+        }
+
+        // Decrypt Text
+        async function decryptText(event) {
+            event.preventDefault();
+            const encryptedData = document.getElementById("encryptedText").value;
+            if (!privateKey || encryptedData.trim() === "") {
+                alert("Encrypt text first!");
+                return;
+            }
+
+            const decryptedData = await window.crypto.subtle.decrypt(
+                {
+                    name: "RSA-OAEP",
+                },
+                privateKey,
+                Uint8Array.from(atob(encryptedData), c => c.charCodeAt(0))
+            );
+
+            const decoder = new TextDecoder();
+            document.getElementById("decryptedText").value = decoder.decode(decryptedData);
+        }
+    </script>
+</head>
+
+<body onload="generateKeys()">
+
+    <header> 
+        <div class="logoimage">
+            <img src="Green Simple Plant Shop Logo11.png"> 
+        </div>
+
+        <div class="list">
             <ul>
                 <li> <a href="index.html"> Home </a></li>
                 <li> <a href="product.html"> Product</a></li>
                 <li> <a href="shoppingCart.html"> Shopping Cart </a></li>
                 <li> <a href="login.html"> Login</a></li>
-                <li> <a href="conactUs.html"> Contact Us</a></li>
+                <li> <a href="conactUs.html"> Contact Us</a></li> 
             </ul>
-        </header>
-
-        <div class="login"> 
-            <form  class= "login_form">
-                <h2>Log in</h2>
-                <label for="email"> User Name or Email : </label>
-                <input type="text" name="email" class="box" placeholder="Enter your email"  required  >
-                <br>
-                <label for="password"> Password : </label>
-                <input type="password" name="password" class="box" placeholder="Enter your password"  required>
-                <br>
-                <input type="submit" name ="submit" value="Log in" class="btn">
-               
-                <p>Don't have an account ? <a href="creatAccount.html">create new </a></p> 
-            </form>
-        
         </div>
+    </header>
+    <div class="container123">
+    <div class="login"> 
+        <form class="login_form">
+            <h2>LOG IN</h2>
+            <br>
+            <label for="email"> User Name or Email: </label>
+            <input type="text" name="email" class="box" placeholder="Enter your email" required>
+            <br>
+            <label for="password"> Password: </label>
+            <input type="password" name="password" class="box" placeholder="Enter your password" required>
+            <br>
+            <input type="submit" name="submit" value="Log in" class="btn">
+            <p>Don't have an account? <a href="creatAccount.html">Create new</a></p> 
+        </form>       
+    </div>
 
+    <div class="login"> 
+        <form class="login_form">
+            <h2>Demonstration of Password Encryption</h2>
+            <br>
+            <label> Enter the password: </label>
+            <input id="inputText" type="text" class="box" placeholder="Password (Plaintext)" required>
+            <br>
+            <button type="button" onclick="encryptText(event)" class="btn">Encrypt</button>
+            <br>
+            <label>Encrypted Password (Ciphertext):</label>
+            <input id="encryptedText" type="text" class="box" readonly>
+            <br>
+            <button type="button" onclick="decryptText(event)" class="btn">Decrypt</button>
+            <br>
+            <label>Decrypted Password:</label>
+            <input id="decryptedText" type="text" class="box" readonly>
+            <br>
+        </form>       
+    </div>
+    </div>
 
-        <footer>
-             <p id="p"> Created By Noura </p>
-        </footer>
-    </body>
+    <footer>
+        <p id="p"> Created By Noura </p>
+    </footer>
+
+</body>
 </html>
+

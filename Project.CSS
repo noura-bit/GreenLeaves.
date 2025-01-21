@@ -45,6 +45,8 @@ header{
     margin: 40px; 
 }
  ul{
+    display: flex;
+    justify-content: space-between;
     list-style-type: none ;
 }
 li{
